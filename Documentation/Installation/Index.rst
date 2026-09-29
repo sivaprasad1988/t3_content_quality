@@ -15,6 +15,9 @@ Composer installation
 
     composer require woit/t3-content-quality
 
+The package is available on
+`Packagist <https://packagist.org/packages/woit/t3-content-quality>`__.
+
 ..  _installation-ter:
 
 Installation from the TER
@@ -24,6 +27,9 @@ In non-Composer (classic mode) installations, open
 :guilabel:`System > Extensions`, search for ``t3_content_quality`` and
 install it. The system extensions ``filelist`` and ``filemetadata`` must
 be active.
+
+The extension is available in the
+`TYPO3 Extension Repository <https://extensions.typo3.org/extension/t3_content_quality>`__.
 
 ..  _installation-setup:
 
