@@ -2,9 +2,9 @@
 
 ..  _start:
 
-=========================
-Content Quality Assistant
-=========================
+============================
+AI Content Quality Assistant
+============================
 
 :Extension key:
     t3_content_quality
@@ -31,7 +31,7 @@ Content Quality Assistant
 
 ----
 
-The Content Quality Assistant checks TYPO3 pages for accessibility, SEO,
+The AI Content Quality Assistant checks TYPO3 pages for accessibility, SEO,
 readability and structured-data problems, directly in the backend. An optional
 AI provider (Anthropic, OpenAI or a local Ollama instance) suggests
 improvements, proposes page titles, meta descriptions and image ALT texts for

@@ -11,7 +11,7 @@ Introduction
 What does it do?
 ================
 
-The Content Quality Assistant adds an editorial quality layer to the TYPO3
+The AI Content Quality Assistant adds an editorial quality layer to the TYPO3
 backend. Rule-based checks run without any external service. When an AI
 provider is configured, the extension also uses it to suggest improvements
 and to generate content for review.

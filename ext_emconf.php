@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Content Quality Assistant',
+    'title' => 'AI Content Quality Assistant',
     'description' => 'AI-powered accessibility, SEO, and readability checks for TYPO3 editors. Analyzes pages and provides concrete improvement suggestions.',
     'category' => 'be',
     'state' => 'beta',

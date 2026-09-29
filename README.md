@@ -1,4 +1,4 @@
-# Content Quality Assistant (`t3_content_quality`)
+# AI Content Quality Assistant (`t3_content_quality`)
 
 [![TYPO3 14](https://img.shields.io/badge/TYPO3-14-orange.svg)](https://get.typo3.org/version/14)
 

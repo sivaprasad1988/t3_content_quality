@@ -9,7 +9,7 @@
                typo3-core-preferred="main"
                interlink-shortcode="woit/t3-content-quality"
     />
-    <project title="Content Quality Assistant"
+    <project title="AI Content Quality Assistant"
              release="0.1.0"
              version="0.1"
              copyright="since 2026 by Sivaprasad Sisupalan"
