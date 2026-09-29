@@ -1,0 +1,6 @@
+# RTE preset "t3_content_quality": the TYPO3 core default preset plus the
+# AI text generator button. Registered in ext_localconf.php; activate with
+# page TSconfig: RTE.default.preset = t3_content_quality
+imports:
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Default.yaml' }
+  - { resource: 'EXT:t3_content_quality/Configuration/RTE/Plugin.yaml' }

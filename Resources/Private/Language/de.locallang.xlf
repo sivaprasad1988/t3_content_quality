@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2026-09-14T00:00:00Z" product-name="t3_content_quality">
+		<header/>
+		<body>
+			<trans-unit id="module.title" resname="module.title">
+				<source>Content Quality</source>
+				<target>Content Quality</target>
+			</trans-unit>
+			<trans-unit id="module.description" resname="module.description">
+				<source>Analyse page accessibility, SEO, and readability</source>
+				<target>Analyse der Barrierefreiheit, SEO und Lesbarkeit einer Seite</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.label" resname="field.schemaType.label">
+				<source>Schema Type (Structured Data)</source>
+				<target>Schema-Typ (strukturierte Daten)</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.autoDetect" resname="field.schemaType.autoDetect">
+				<source>(Auto-detect)</source>
+				<target>(Automatisch erkennen)</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.event" resname="field.schemaType.event">
+				<source>Event</source>
+				<target>Event</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.newsArticle" resname="field.schemaType.newsArticle">
+				<source>NewsArticle</source>
+				<target>NewsArticle</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.touristAttraction" resname="field.schemaType.touristAttraction">
+				<source>TouristAttraction</source>
+				<target>TouristAttraction</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.localBusiness" resname="field.schemaType.localBusiness">
+				<source>LocalBusiness</source>
+				<target>LocalBusiness</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.organization" resname="field.schemaType.organization">
+				<source>Organization</source>
+				<target>Organization</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.faqPage" resname="field.schemaType.faqPage">
+				<source>FAQPage</source>
+				<target>FAQPage</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.jobPosting" resname="field.schemaType.jobPosting">
+				<source>JobPosting</source>
+				<target>JobPosting</target>
+			</trans-unit>
+			<trans-unit id="field.schemaType.product" resname="field.schemaType.product">
+				<source>Product</source>
+				<target>Product</target>
+			</trans-unit>
+			<trans-unit id="panel.title" resname="panel.title">
+				<source>Content Quality</source>
+				<target>Content Quality</target>
+			</trans-unit>
+			<trans-unit id="panel.notAnalysedYet" resname="panel.notAnalysedYet">
+				<source>Not analysed yet.</source>
+				<target>Noch nicht analysiert.</target>
+			</trans-unit>
+			<trans-unit id="panel.analysePage" resname="panel.analysePage">
+				<source>Analyse Page</source>
+				<target>Seite analysieren</target>
+			</trans-unit>
+			<trans-unit id="panel.reanalyse" resname="panel.reanalyse">
+				<source>Reanalyse</source>
+				<target>Erneut analysieren</target>
+			</trans-unit>
+			<trans-unit id="panel.details" resname="panel.details">
+				<source>Details</source>
+				<target>Details</target>
+			</trans-unit>
+			<trans-unit id="panel.analysing" resname="panel.analysing">
+				<source>Analysing…</source>
+				<target>Analysiere…</target>
+			</trans-unit>
+			<trans-unit id="panel.accessibility" resname="panel.accessibility">
+				<source>Accessibility:</source>
+				<target>Barrierefreiheit:</target>
+			</trans-unit>
+			<trans-unit id="panel.seo" resname="panel.seo">
+				<source>SEO:</source>
+				<target>SEO:</target>
+			</trans-unit>
+			<trans-unit id="panel.readability" resname="panel.readability">
+				<source>Readability:</source>
+				<target>Lesbarkeit:</target>
+			</trans-unit>
+			<trans-unit id="panel.schema" resname="panel.schema">
+				<source>Schema:</source>
+				<target>Schema:</target>
+			</trans-unit>
+			<trans-unit id="panel.readabilityAnalysis" resname="panel.readabilityAnalysis">
+				<source>Readability analysis</source>
+				<target>Lesbarkeitsanalyse</target>
+			</trans-unit>
+			<trans-unit id="panel.seoAnalysis" resname="panel.seoAnalysis">
+				<source>SEO analysis</source>
+				<target>SEO-Analyse</target>
+			</trans-unit>
+			<trans-unit id="panel.quality.good" resname="panel.quality.good">
+				<source>Good</source>
+				<target>Gut</target>
+			</trans-unit>
+			<trans-unit id="panel.quality.fair" resname="panel.quality.fair">
+				<source>Fair</source>
+				<target>Mittel</target>
+			</trans-unit>
+			<trans-unit id="panel.quality.poor" resname="panel.quality.poor">
+				<source>Poor</source>
+				<target>Schlecht</target>
+			</trans-unit>
+			<trans-unit id="panel.issue.singular" resname="panel.issue.singular">
+				<source>issue</source>
+				<target>Problem</target>
+			</trans-unit>
+			<trans-unit id="panel.issue.plural" resname="panel.issue.plural">
+				<source>issues</source>
+				<target>Probleme</target>
+			</trans-unit>
+			<trans-unit id="panel.noIssues" resname="panel.noIssues">
+				<source>No issues</source>
+				<target>Keine Probleme</target>
+			</trans-unit>
+			<trans-unit id="panel.serpPreview" resname="panel.serpPreview">
+				<source>SERP Preview</source>
+				<target>SERP-Vorschau</target>
+			</trans-unit>
+			<trans-unit id="panel.titleLabel" resname="panel.titleLabel">
+				<source>Title:</source>
+				<target>Titel:</target>
+			</trans-unit>
+			<trans-unit id="panel.charsOf60" resname="panel.charsOf60">
+				<source>/ 60 chars</source>
+				<target>/ 60 Zeichen</target>
+			</trans-unit>
+			<trans-unit id="panel.descriptionLabel" resname="panel.descriptionLabel">
+				<source>Description:</source>
+				<target>Beschreibung:</target>
+			</trans-unit>
+			<trans-unit id="panel.charsOf160" resname="panel.charsOf160">
+				<source>/ 160 chars</source>
+				<target>/ 160 Zeichen</target>
+			</trans-unit>
+			<trans-unit id="panel.noMetaDescription" resname="panel.noMetaDescription">
+				<source>No meta description.</source>
+				<target>Keine Meta-Beschreibung.</target>
+			</trans-unit>
+			<trans-unit id="panel.fleschReadingEase" resname="panel.fleschReadingEase">
+				<source>Flesch Reading Ease</source>
+				<target>Flesch-Lesbarkeitsindex</target>
+			</trans-unit>
+			<trans-unit id="panel.germanAmstad" resname="panel.germanAmstad">
+				<source>(German Amstad)</source>
+				<target>(Amstad-Formel)</target>
+			</trans-unit>
+			<trans-unit id="panel.readingEase.easy" resname="panel.readingEase.easy">
+				<source>Easy to read</source>
+				<target>Leicht verständlich</target>
+			</trans-unit>
+			<trans-unit id="panel.readingEase.fairlyEasy" resname="panel.readingEase.fairlyEasy">
+				<source>Fairly easy</source>
+				<target>Ziemlich leicht verständlich</target>
+			</trans-unit>
+			<trans-unit id="panel.readingEase.moderate" resname="panel.readingEase.moderate">
+				<source>Moderate</source>
+				<target>Mittelschwer</target>
+			</trans-unit>
+			<trans-unit id="panel.readingEase.difficult" resname="panel.readingEase.difficult">
+				<source>Difficult</source>
+				<target>Schwer verständlich</target>
+			</trans-unit>
+			<trans-unit id="panel.readingEase.veryDifficult" resname="panel.readingEase.veryDifficult">
+				<source>Very difficult</source>
+				<target>Sehr schwer verständlich</target>
+			</trans-unit>
+			<trans-unit id="panel.hard" resname="panel.hard">
+				<source>0 Hard</source>
+				<target>0 Schwer</target>
+			</trans-unit>
+			<trans-unit id="panel.easy" resname="panel.easy">
+				<source>100 Easy</source>
+				<target>100 Leicht</target>
+			</trans-unit>
+			<trans-unit id="panel.issuesHeading" resname="panel.issuesHeading">
+				<source>Issues</source>
+				<target>Probleme</target>
+			</trans-unit>
+			<trans-unit id="panel.category" resname="panel.category">
+				<source>Category</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="panel.severity" resname="panel.severity">
+				<source>Severity</source>
+				<target>Schweregrad</target>
+			</trans-unit>
+			<trans-unit id="panel.issueColumn" resname="panel.issueColumn">
+				<source>Issue</source>
+				<target>Problem</target>
+			</trans-unit>
+			<trans-unit id="panel.suggestion" resname="panel.suggestion">
+				<source>Suggestion</source>
+				<target>Vorschlag</target>
+			</trans-unit>
+			<trans-unit id="panel.action" resname="panel.action">
+				<source>Action</source>
+				<target>Aktion</target>
+			</trans-unit>
+			<trans-unit id="panel.noIssuesFound" resname="panel.noIssuesFound">
+				<source>No issues found.</source>
+				<target>Keine Probleme gefunden.</target>
+			</trans-unit>
+			<trans-unit id="panel.aiSuggestions" resname="panel.aiSuggestions">
+				<source>AI Suggestions</source>
+				<target>KI-Vorschläge</target>
+			</trans-unit>
+			<trans-unit id="panel.accessibilityHeading" resname="panel.accessibilityHeading">
+				<source>Accessibility</source>
+				<target>Barrierefreiheit</target>
+			</trans-unit>
+			<trans-unit id="panel.noAccessibilityIssues" resname="panel.noAccessibilityIssues">
+				<source>No accessibility issues found.</source>
+				<target>Keine Probleme bei der Barrierefreiheit gefunden.</target>
+			</trans-unit>
+			<trans-unit id="panel.aiSuggestedChanges" resname="panel.aiSuggestedChanges">
+				<source>✨ AI Suggested Changes (not saved yet)</source>
+				<target>✨ KI-Änderungsvorschläge (noch nicht gespeichert)</target>
+			</trans-unit>
+			<trans-unit id="panel.apply" resname="panel.apply">
+				<source>Apply</source>
+				<target>Übernehmen</target>
+			</trans-unit>
+			<trans-unit id="panel.discard" resname="panel.discard">
+				<source>Discard</source>
+				<target>Verwerfen</target>
+			</trans-unit>
+			<trans-unit id="panel.fixWithAi" resname="panel.fixWithAi">
+				<source>Fix with AI</source>
+				<target>Mit KI beheben</target>
+			</trans-unit>
+			<trans-unit id="panel.fixButton" resname="panel.fixButton">
+				<source>Fix</source>
+				<target>Beheben</target>
+			</trans-unit>
+			<trans-unit id="panel.fixType.title" resname="panel.fixType.title">
+				<source>Page Title</source>
+				<target>Seitentitel</target>
+			</trans-unit>
+			<trans-unit id="panel.fixType.description" resname="panel.fixType.description">
+				<source>Meta Description</source>
+				<target>Meta-Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="panel.fixType.altText" resname="panel.fixType.altText">
+				<source>Image ALT Text</source>
+				<target>Bild-ALT-Text</target>
+			</trans-unit>
+			<trans-unit id="qualityPanel.notAnalysedYet" resname="qualityPanel.notAnalysedYet">
+				<source>Not analysed yet</source>
+				<target>Noch nicht analysiert</target>
+			</trans-unit>
+			<trans-unit id="qualityPanel.minRead" resname="qualityPanel.minRead">
+				<source>min read</source>
+				<target>Min. Lesezeit</target>
+			</trans-unit>
+			<trans-unit id="qualityPanel.analysedLabel" resname="qualityPanel.analysedLabel">
+				<source>Analysed:</source>
+				<target>Analysiert:</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noPageSelected.title" resname="backendModule.noPageSelected.title">
+				<source>No page selected.</source>
+				<target>Keine Seite ausgewählt.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noPageSelected.body" resname="backendModule.noPageSelected.body">
+				<source>Please select a page in the page tree to analyse its content quality.</source>
+				<target>Bitte wählen Sie im Seitenbaum eine Seite aus, um deren Inhaltsqualität zu analysieren.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.pageHeading" resname="backendModule.pageHeading">
+				<source>Content Quality — Page</source>
+				<target>Content Quality — Seite</target>
+			</trans-unit>
+			<trans-unit id="backendModule.allPagesOverview" resname="backendModule.allPagesOverview">
+				<source>All Pages Overview</source>
+				<target>Übersicht aller Seiten</target>
+			</trans-unit>
+			<trans-unit id="backendModule.runAnalysisAgain" resname="backendModule.runAnalysisAgain">
+				<source>Run Analysis Again</source>
+				<target>Analyse erneut ausführen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.pendingAiChanges" resname="backendModule.pendingAiChanges">
+				<source>Pending AI Changes</source>
+				<target>Ausstehende KI-Änderungen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.applyAll" resname="backendModule.applyAll">
+				<source>Apply All</source>
+				<target>Alle übernehmen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.discardAll" resname="backendModule.discardAll">
+				<source>Discard All</source>
+				<target>Alle verwerfen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.before" resname="backendModule.before">
+				<source>Before</source>
+				<target>Vorher</target>
+			</trans-unit>
+			<trans-unit id="backendModule.afterAiSuggested" resname="backendModule.afterAiSuggested">
+				<source>After (AI suggested)</source>
+				<target>Nachher (KI-Vorschlag)</target>
+			</trans-unit>
+			<trans-unit id="backendModule.pendingHint" resname="backendModule.pendingHint">
+				<source>Nothing is written until you click Apply All. Discard All removes these suggestions without changing the page.</source>
+				<target>Es wird nichts gespeichert, bis Sie auf „Alle übernehmen“ klicken. „Alle verwerfen“ entfernt diese Vorschläge, ohne die Seite zu ändern.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.overall" resname="backendModule.overall">
+				<source>Overall</source>
+				<target>Gesamt</target>
+			</trans-unit>
+			<trans-unit id="backendModule.outOf100" resname="backendModule.outOf100">
+				<source>/ 100</source>
+				<target>/ 100</target>
+			</trans-unit>
+			<trans-unit id="backendModule.accessibility" resname="backendModule.accessibility">
+				<source>Accessibility</source>
+				<target>Barrierefreiheit</target>
+			</trans-unit>
+			<trans-unit id="backendModule.seo" resname="backendModule.seo">
+				<source>SEO</source>
+				<target>SEO</target>
+			</trans-unit>
+			<trans-unit id="backendModule.readability" resname="backendModule.readability">
+				<source>Readability</source>
+				<target>Lesbarkeit</target>
+			</trans-unit>
+			<trans-unit id="backendModule.schema" resname="backendModule.schema">
+				<source>Schema</source>
+				<target>Schema</target>
+			</trans-unit>
+			<trans-unit id="backendModule.scoreTrend" resname="backendModule.scoreTrend">
+				<source>Score Trend</source>
+				<target>Punktzahlverlauf</target>
+			</trans-unit>
+			<trans-unit id="backendModule.issuesFound" resname="backendModule.issuesFound">
+				<source>Issues Found</source>
+				<target>Gefundene Probleme</target>
+			</trans-unit>
+			<trans-unit id="backendModule.severityError" resname="backendModule.severityError">
+				<source>error</source>
+				<target>Fehler</target>
+			</trans-unit>
+			<trans-unit id="backendModule.severityWarning" resname="backendModule.severityWarning">
+				<source>warning</source>
+				<target>Warnung</target>
+			</trans-unit>
+			<trans-unit id="backendModule.severityInfo" resname="backendModule.severityInfo">
+				<source>info</source>
+				<target>Info</target>
+			</trans-unit>
+			<trans-unit id="backendModule.headingMap" resname="backendModule.headingMap">
+				<source>Heading Map</source>
+				<target>Überschriftenstruktur</target>
+			</trans-unit>
+			<trans-unit id="backendModule.heading.singular" resname="backendModule.heading.singular">
+				<source>heading</source>
+				<target>Überschrift</target>
+			</trans-unit>
+			<trans-unit id="backendModule.heading.plural" resname="backendModule.heading.plural">
+				<source>headings</source>
+				<target>Überschriften</target>
+			</trans-unit>
+			<trans-unit id="backendModule.missingHeadingPrefix" resname="backendModule.missingHeadingPrefix">
+				<source>— missing H</source>
+				<target>— fehlt H</target>
+			</trans-unit>
+			<trans-unit id="backendModule.missingHeadingSuffix" resname="backendModule.missingHeadingSuffix">
+				<source>—</source>
+				<target>—</target>
+			</trans-unit>
+			<trans-unit id="backendModule.duplicateH1" resname="backendModule.duplicateH1">
+				<source>duplicate H1</source>
+				<target>doppelte H1</target>
+			</trans-unit>
+			<trans-unit id="backendModule.aiImprovementSuggestions" resname="backendModule.aiImprovementSuggestions">
+				<source>AI Improvement Suggestions</source>
+				<target>KI-Verbesserungsvorschläge</target>
+			</trans-unit>
+			<trans-unit id="backendModule.via" resname="backendModule.via">
+				<source>via</source>
+				<target>über</target>
+			</trans-unit>
+			<trans-unit id="backendModule.suggestedInternalLinks" resname="backendModule.suggestedInternalLinks">
+				<source>Suggested Internal Links</source>
+				<target>Vorgeschlagene interne Links</target>
+			</trans-unit>
+			<trans-unit id="backendModule.aiDetectionFailed" resname="backendModule.aiDetectionFailed">
+				<source>AI Detection Failed:</source>
+				<target>KI-Erkennung fehlgeschlagen:</target>
+			</trans-unit>
+			<trans-unit id="backendModule.schemaDetected" resname="backendModule.schemaDetected">
+				<source>Schema Detected:</source>
+				<target>Schema erkannt:</target>
+			</trans-unit>
+			<trans-unit id="backendModule.linkCheck" resname="backendModule.linkCheck">
+				<source>Link Check</source>
+				<target>Link-Prüfung</target>
+			</trans-unit>
+			<trans-unit id="backendModule.checkLinks" resname="backendModule.checkLinks">
+				<source>Check Links</source>
+				<target>Links prüfen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.url" resname="backendModule.url">
+				<source>URL</source>
+				<target>URL</target>
+			</trans-unit>
+			<trans-unit id="backendModule.status" resname="backendModule.status">
+				<source>Status</source>
+				<target>Status</target>
+			</trans-unit>
+			<trans-unit id="backendModule.structuredData" resname="backendModule.structuredData">
+				<source>Structured Data (Schema.org)</source>
+				<target>Strukturierte Daten (Schema.org)</target>
+			</trans-unit>
+			<trans-unit id="backendModule.detectWithAi" resname="backendModule.detectWithAi">
+				<source>Detect with AI</source>
+				<target>Mit KI erkennen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.exportAuditCsv" resname="backendModule.exportAuditCsv">
+				<source>Export Audit CSV</source>
+				<target>Audit als CSV exportieren</target>
+			</trans-unit>
+			<trans-unit id="backendModule.aiDetected" resname="backendModule.aiDetected">
+				<source>AI-detected</source>
+				<target>KI-erkannt</target>
+			</trans-unit>
+			<trans-unit id="backendModule.ruleBased" resname="backendModule.ruleBased">
+				<source>Rule-based</source>
+				<target>Regelbasiert</target>
+			</trans-unit>
+			<trans-unit id="backendModule.schemaScoreLabel" resname="backendModule.schemaScoreLabel">
+				<source>Schema Score:</source>
+				<target>Schema-Wert:</target>
+			</trans-unit>
+			<trans-unit id="backendModule.approvedLive" resname="backendModule.approvedLive">
+				<source>Approved &amp; Live</source>
+				<target>Freigegeben &amp; aktiv</target>
+			</trans-unit>
+			<trans-unit id="backendModule.jsonLdPreviewLabel" resname="backendModule.jsonLdPreviewLabel">
+				<source>JSON-LD Preview (editable before approving)</source>
+				<target>JSON-LD-Vorschau (vor der Freigabe bearbeitbar)</target>
+			</trans-unit>
+			<trans-unit id="backendModule.approveActivate" resname="backendModule.approveActivate">
+				<source>Approve &amp; Activate</source>
+				<target>Freigeben &amp; aktivieren</target>
+			</trans-unit>
+			<trans-unit id="backendModule.removeApprovedSchema" resname="backendModule.removeApprovedSchema">
+				<source>Remove Approved Schema</source>
+				<target>Freigegebenes Schema entfernen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.jsonLdErrors" resname="backendModule.jsonLdErrors">
+				<source>JSON-LD Structural Errors</source>
+				<target>JSON-LD-Strukturfehler</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noSchemaDetected.prefix" resname="backendModule.noSchemaDetected.prefix">
+				<source>No schema type detected yet. Click</source>
+				<target>Noch kein Schema-Typ erkannt. Klicken Sie oben auf</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noSchemaDetected.middle" resname="backendModule.noSchemaDetected.middle">
+				<source>above for AI-powered detection, or</source>
+				<target>für die KI-gestützte Erkennung, oder auf</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noSchemaDetected.suffix" resname="backendModule.noSchemaDetected.suffix">
+				<source>for rule-based detection.</source>
+				<target>für die regelbasierte Erkennung.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.lastAnalysed" resname="backendModule.lastAnalysed">
+				<source>Last analysed:</source>
+				<target>Zuletzt analysiert:</target>
+			</trans-unit>
+			<trans-unit id="backendModule.notAnalysedCallout.prefix" resname="backendModule.notAnalysedCallout.prefix">
+				<source>This page has not been analysed yet. Click</source>
+				<target>Diese Seite wurde noch nicht analysiert. Klicken Sie auf</target>
+			</trans-unit>
+			<trans-unit id="backendModule.notAnalysedCallout.suffix" resname="backendModule.notAnalysedCallout.suffix">
+				<source>to run quality checks.</source>
+				<target>, um die Qualitätsprüfung auszuführen.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.allPagesHeading" resname="backendModule.allPagesHeading">
+				<source>Content Quality — All Pages</source>
+				<target>Content Quality — Alle Seiten</target>
+			</trans-unit>
+			<trans-unit id="backendModule.back" resname="backendModule.back">
+				<source>Back</source>
+				<target>Zurück</target>
+			</trans-unit>
+			<trans-unit id="backendModule.truncatedWarning" resname="backendModule.truncatedWarning">
+				<source>More than 15 pages were selected — only the first 15 were processed. Re-run for the rest.</source>
+				<target>Es wurden mehr als 15 Seiten ausgewählt — nur die ersten 15 wurden verarbeitet. Für den Rest erneut ausführen.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.reviewBatchChanges" resname="backendModule.reviewBatchChanges">
+				<source>Review Batch AI Changes</source>
+				<target>Batch-KI-Änderungen überprüfen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.nothingWrittenHint" resname="backendModule.nothingWrittenHint">
+				<source>nothing is written until you apply</source>
+				<target>es wird nichts gespeichert, bis Sie übernehmen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.page" resname="backendModule.page">
+				<source>Page</source>
+				<target>Seite</target>
+			</trans-unit>
+			<trans-unit id="backendModule.field" resname="backendModule.field">
+				<source>Field</source>
+				<target>Feld</target>
+			</trans-unit>
+			<trans-unit id="backendModule.applySelected" resname="backendModule.applySelected">
+				<source>Apply Selected</source>
+				<target>Ausgewählte übernehmen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.discardSelected" resname="backendModule.discardSelected">
+				<source>Discard Selected</source>
+				<target>Ausgewählte verwerfen</target>
+			</trans-unit>
+			<trans-unit id="backendModule.page.singular" resname="backendModule.page.singular">
+				<source>page</source>
+				<target>Seite</target>
+			</trans-unit>
+			<trans-unit id="backendModule.page.plural" resname="backendModule.page.plural">
+				<source>pages</source>
+				<target>Seiten</target>
+			</trans-unit>
+			<trans-unit id="backendModule.unanalyzedSuffix" resname="backendModule.unanalyzedSuffix">
+				<source>not analysed yet — open them individually in Content &gt; Content Quality to include them here.</source>
+				<target>noch nicht analysiert — öffnen Sie diese einzeln unter Inhalt &gt; Content Quality, um sie hier einzubeziehen.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.pagesWorstFirst" resname="backendModule.pagesWorstFirst">
+				<source>Pages, worst score first</source>
+				<target>Seiten, schlechteste Bewertung zuerst</target>
+			</trans-unit>
+			<trans-unit id="backendModule.fixPageTitle" resname="backendModule.fixPageTitle">
+				<source>Fix: Page Title</source>
+				<target>Beheben: Seitentitel</target>
+			</trans-unit>
+			<trans-unit id="backendModule.fixMetaDescription" resname="backendModule.fixMetaDescription">
+				<source>Fix: Meta Description</source>
+				<target>Beheben: Meta-Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="backendModule.fixAltText" resname="backendModule.fixAltText">
+				<source>Fix: Image ALT Text</source>
+				<target>Beheben: Bild-ALT-Text</target>
+			</trans-unit>
+			<trans-unit id="backendModule.generateFixesSelected" resname="backendModule.generateFixesSelected">
+				<source>Generate Fixes for Selected (max 15)</source>
+				<target>Korrekturen für Auswahl generieren (max. 15)</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noPagesAnalysed.prefix" resname="backendModule.noPagesAnalysed.prefix">
+				<source>No pages analysed yet. Open a page's Content Quality module and click</source>
+				<target>Noch keine Seiten analysiert. Öffnen Sie das Content-Quality-Modul einer Seite und klicken Sie auf</target>
+			</trans-unit>
+			<trans-unit id="backendModule.noPagesAnalysed.suffix" resname="backendModule.noPagesAnalysed.suffix">
+				<source>to get started.</source>
+				<target>, um zu beginnen.</target>
+			</trans-unit>
+			<trans-unit id="backendModule.issuesColumn" resname="backendModule.issuesColumn">
+				<source>Issues</source>
+				<target>Probleme</target>
+			</trans-unit>
+			<trans-unit id="backendModule.analysedColumn" resname="backendModule.analysedColumn">
+				<source>Analysed</source>
+				<target>Analysiert</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.analysing" resname="backendModule.loader.analysing">
+				<source>Analysing...</source>
+				<target>Analysiere...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.applying" resname="backendModule.loader.applying">
+				<source>Applying...</source>
+				<target>Übernehme...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.discarding" resname="backendModule.loader.discarding">
+				<source>Discarding...</source>
+				<target>Verwerfe...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.checkingLinks" resname="backendModule.loader.checkingLinks">
+				<source>Checking links...</source>
+				<target>Prüfe Links...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.detectingAi" resname="backendModule.loader.detectingAi">
+				<source>Detecting with AI...</source>
+				<target>Erkenne mit KI...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.saving" resname="backendModule.loader.saving">
+				<source>Saving...</source>
+				<target>Speichere...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.removing" resname="backendModule.loader.removing">
+				<source>Removing...</source>
+				<target>Entferne...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.loader.generatingFixes" resname="backendModule.loader.generatingFixes">
+				<source>Generating fixes...</source>
+				<target>Generiere Korrekturen...</target>
+			</trans-unit>
+			<trans-unit id="backendModule.working" resname="backendModule.working">
+				<source>Working...</source>
+				<target>Wird ausgeführt...</target>
+			</trans-unit>
+			<trans-unit id="accessibility.missingAlt.message.one" resname="accessibility.missingAlt.message.one">
+				<source>1 image is missing ALT text.</source>
+				<target>1 Bild hat kein ALT-Attribut.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.missingAlt.message.other" resname="accessibility.missingAlt.message.other">
+				<source>%d images are missing ALT text.</source>
+				<target>%d Bilder haben kein ALT-Attribut.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.missingAlt.suggestion" resname="accessibility.missingAlt.suggestion">
+				<source>Add descriptive ALT text to every meaningful image.</source>
+				<target>Fügen Sie jedem bedeutungsvollen Bild einen beschreibenden ALT-Text hinzu.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.genericAlt.message.one" resname="accessibility.genericAlt.message.one">
+				<source>1 image has generic or filename-based ALT text.</source>
+				<target>1 Bild hat einen generischen oder auf dem Dateinamen basierenden ALT-Text.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.genericAlt.message.other" resname="accessibility.genericAlt.message.other">
+				<source>%d images have generic or filename-based ALT text.</source>
+				<target>%d Bilder haben einen generischen oder auf dem Dateinamen basierenden ALT-Text.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.genericAlt.suggestion" resname="accessibility.genericAlt.suggestion">
+				<source>Replace generic ALT text with a meaningful image description.</source>
+				<target>Ersetzen Sie generischen ALT-Text durch eine aussagekräftige Bildbeschreibung.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.noHeadings.message" resname="accessibility.noHeadings.message">
+				<source>Page has no headings.</source>
+				<target>Die Seite hat keine Überschriften.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.noHeadings.suggestion" resname="accessibility.noHeadings.suggestion">
+				<source>Add a clear heading structure (H1, H2, H3) to organise the content.</source>
+				<target>Fügen Sie eine klare Überschriftenstruktur (H1, H2, H3) hinzu, um den Inhalt zu gliedern.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.headingJump.message" resname="accessibility.headingJump.message">
+				<source>Heading structure jumps from H%d to H%d. Missing H%d. (At heading: "%s")</source>
+				<target>Die Überschriftenstruktur springt von H%d zu H%d. H%d fehlt. (Bei Überschrift: „%s“)</target>
+			</trans-unit>
+			<trans-unit id="accessibility.headingJump.suggestion" resname="accessibility.headingJump.suggestion">
+				<source>Use sequential heading levels. Do not skip levels (e.g. H2 → H4).</source>
+				<target>Verwenden Sie aufeinanderfolgende Überschriftenebenen. Überspringen Sie keine Ebenen (z. B. H2 → H4).</target>
+			</trans-unit>
+			<trans-unit id="accessibility.noH1.message" resname="accessibility.noH1.message">
+				<source>Page has no H1 heading.</source>
+				<target>Die Seite hat keine H1-Überschrift.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.noH1.suggestion" resname="accessibility.noH1.suggestion">
+				<source>Every page should have exactly one H1 heading as the main title.</source>
+				<target>Jede Seite sollte genau eine H1-Überschrift als Haupttitel haben.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.multipleH1.message" resname="accessibility.multipleH1.message">
+				<source>Page has %d H1 headings. Only one H1 is recommended.</source>
+				<target>Die Seite hat %d H1-Überschriften. Es wird nur eine H1 empfohlen.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.multipleH1.suggestion" resname="accessibility.multipleH1.suggestion">
+				<source>Use a single H1 as the main page title. Use H2–H6 for sub-sections.</source>
+				<target>Verwenden Sie eine einzelne H1 als Haupttitel der Seite. Nutzen Sie H2–H6 für Unterabschnitte.</target>
+			</trans-unit>
+			<trans-unit id="accessibility.genericLinkText.message.one" resname="accessibility.genericLinkText.message.one">
+				<source>1 link uses generic text (e.g. "Click here", "Mehr erfahren").</source>
+				<target>1 Link verwendet generischen Text (z. B. „Click here“, „Mehr erfahren“).</target>
+			</trans-unit>
+			<trans-unit id="accessibility.genericLinkText.message.other" resname="accessibility.genericLinkText.message.other">
+				<source>%d links use generic text (e.g. "Click here", "Mehr erfahren").</source>
+				<target>%d Links verwenden generischen Text (z. B. „Click here“, „Mehr erfahren“).</target>
+			</trans-unit>
+			<trans-unit id="accessibility.genericLinkText.suggestion" resname="accessibility.genericLinkText.suggestion">
+				<source>Use descriptive link text that explains the destination.</source>
+				<target>Verwenden Sie beschreibenden Linktext, der das Ziel erklärt.</target>
+			</trans-unit>
+			<trans-unit id="seo.missingMetaDescription.message" resname="seo.missingMetaDescription.message">
+				<source>Meta description is missing.</source>
+				<target>Die Meta-Beschreibung fehlt.</target>
+			</trans-unit>
+			<trans-unit id="seo.missingMetaDescription.suggestion" resname="seo.missingMetaDescription.suggestion">
+				<source>Add a meta description between 120–160 characters summarising the page content.</source>
+				<target>Fügen Sie eine Meta-Beschreibung mit 120–160 Zeichen hinzu, die den Seiteninhalt zusammenfasst.</target>
+			</trans-unit>
+			<trans-unit id="seo.metaDescriptionTooShort.message" resname="seo.metaDescriptionTooShort.message">
+				<source>Meta description is too short (%d characters). Recommended: 120–160.</source>
+				<target>Die Meta-Beschreibung ist zu kurz (%d Zeichen). Empfohlen: 120–160.</target>
+			</trans-unit>
+			<trans-unit id="seo.metaDescriptionTooShort.suggestion" resname="seo.metaDescriptionTooShort.suggestion">
+				<source>Expand the meta description to 120–160 characters.</source>
+				<target>Erweitern Sie die Meta-Beschreibung auf 120–160 Zeichen.</target>
+			</trans-unit>
+			<trans-unit id="seo.metaDescriptionTooLong.message" resname="seo.metaDescriptionTooLong.message">
+				<source>Meta description is too long (%d characters). Recommended: 120–160.</source>
+				<target>Die Meta-Beschreibung ist zu lang (%d Zeichen). Empfohlen: 120–160.</target>
+			</trans-unit>
+			<trans-unit id="seo.metaDescriptionTooLong.suggestion" resname="seo.metaDescriptionTooLong.suggestion">
+				<source>Shorten the meta description to under 160 characters.</source>
+				<target>Kürzen Sie die Meta-Beschreibung auf unter 160 Zeichen.</target>
+			</trans-unit>
+			<trans-unit id="seo.missingTitle.message" resname="seo.missingTitle.message">
+				<source>Page title is missing.</source>
+				<target>Der Seitentitel fehlt.</target>
+			</trans-unit>
+			<trans-unit id="seo.missingTitle.suggestion" resname="seo.missingTitle.suggestion">
+				<source>Add a descriptive page title between 30–60 characters.</source>
+				<target>Fügen Sie einen beschreibenden Seitentitel mit 30–60 Zeichen hinzu.</target>
+			</trans-unit>
+			<trans-unit id="seo.titleTooShort.message" resname="seo.titleTooShort.message">
+				<source>Page title is very short (%d characters). Recommended: 30–60. (Title: "%s")</source>
+				<target>Der Seitentitel ist sehr kurz (%d Zeichen). Empfohlen: 30–60. (Titel: „%s“)</target>
+			</trans-unit>
+			<trans-unit id="seo.titleTooShort.suggestion" resname="seo.titleTooShort.suggestion">
+				<source>Use a descriptive title between 30–60 characters.</source>
+				<target>Verwenden Sie einen beschreibenden Titel mit 30–60 Zeichen.</target>
+			</trans-unit>
+			<trans-unit id="seo.titleTooLong.message" resname="seo.titleTooLong.message">
+				<source>Page title is too long (%d characters). Recommended: 30–60. (Title: "%s")</source>
+				<target>Der Seitentitel ist zu lang (%d Zeichen). Empfohlen: 30–60. (Titel: „%s“)</target>
+			</trans-unit>
+			<trans-unit id="seo.titleTooLong.suggestion" resname="seo.titleTooLong.suggestion">
+				<source>Shorten the page title to under 60 characters.</source>
+				<target>Kürzen Sie den Seitentitel auf unter 60 Zeichen.</target>
+			</trans-unit>
+			<trans-unit id="seo.noLinks.message" resname="seo.noLinks.message">
+				<source>No links found on this page.</source>
+				<target>Auf dieser Seite wurden keine Links gefunden.</target>
+			</trans-unit>
+			<trans-unit id="seo.noLinks.suggestion" resname="seo.noLinks.suggestion">
+				<source>Consider adding internal links to related pages to improve navigation and SEO.</source>
+				<target>Erwägen Sie das Hinzufügen interner Links zu verwandten Seiten, um Navigation und SEO zu verbessern.</target>
+			</trans-unit>
+			<trans-unit id="readability.longSentences.message.one" resname="readability.longSentences.message.one">
+				<source>1 sentence exceeds %d words. (e.g. "%s")</source>
+				<target>1 Satz überschreitet %d Wörter. (z. B. „%s“)</target>
+			</trans-unit>
+			<trans-unit id="readability.longSentences.message.other" resname="readability.longSentences.message.other">
+				<source>%d sentences exceed %d words. (e.g. "%s")</source>
+				<target>%d Sätze überschreiten %d Wörter. (z. B. „%s“)</target>
+			</trans-unit>
+			<trans-unit id="readability.longSentences.suggestion" resname="readability.longSentences.suggestion">
+				<source>Break long sentences into shorter ones (aim for under 25 words per sentence).</source>
+				<target>Teilen Sie lange Sätze in kürzere auf (streben Sie unter 25 Wörter pro Satz an).</target>
+			</trans-unit>
+			<trans-unit id="readability.shortText.message" resname="readability.shortText.message">
+				<source>Page has very little text (%d words).</source>
+				<target>Die Seite hat sehr wenig Text (%d Wörter).</target>
+			</trans-unit>
+			<trans-unit id="readability.shortText.suggestion" resname="readability.shortText.suggestion">
+				<source>Consider adding more content to provide value to readers and search engines.</source>
+				<target>Erwägen Sie, mehr Inhalt hinzuzufügen, um Lesern und Suchmaschinen einen Mehrwert zu bieten.</target>
+			</trans-unit>
+			<trans-unit id="readability.fleschVeryDifficult.message" resname="readability.fleschVeryDifficult.message">
+				<source>Flesch Reading Ease: %.0f/100 — text is very difficult to read.</source>
+				<target>Flesch-Lesbarkeitsindex: %.0f/100 — der Text ist sehr schwer zu lesen.</target>
+			</trans-unit>
+			<trans-unit id="readability.fleschVeryDifficult.suggestion" resname="readability.fleschVeryDifficult.suggestion">
+				<source>Simplify language: shorter sentences, common everyday words.</source>
+				<target>Vereinfachen Sie die Sprache: kürzere Sätze, gebräuchliche Alltagswörter.</target>
+			</trans-unit>
+			<trans-unit id="readability.fleschModerate.message" resname="readability.fleschModerate.message">
+				<source>Flesch Reading Ease: %.0f/100 — moderately difficult.</source>
+				<target>Flesch-Lesbarkeitsindex: %.0f/100 — mittelschwer.</target>
+			</trans-unit>
+			<trans-unit id="readability.fleschModerate.suggestion" resname="readability.fleschModerate.suggestion">
+				<source>Consider simplifying for B1-level readers.</source>
+				<target>Erwägen Sie eine Vereinfachung für Leser auf B1-Niveau.</target>
+			</trans-unit>
+			<trans-unit id="duplicateContent.titleSimilar.message" resname="duplicateContent.titleSimilar.message">
+				<source>Page title is %.0f%% similar to page %d ("%s").</source>
+				<target>Der Seitentitel ist zu %.0f%% ähnlich zu Seite %d („%s“).</target>
+			</trans-unit>
+			<trans-unit id="duplicateContent.titleSimilar.suggestion" resname="duplicateContent.titleSimilar.suggestion">
+				<source>Use a more distinct, page-specific title to avoid confusing search engines and editors.</source>
+				<target>Verwenden Sie einen unterscheidbaren, seitenspezifischen Titel, um Suchmaschinen und Redakteure nicht zu verwirren.</target>
+			</trans-unit>
+			<trans-unit id="duplicateContent.descriptionSimilar.message" resname="duplicateContent.descriptionSimilar.message">
+				<source>Meta description is %.0f%% similar to page %d ("%s").</source>
+				<target>Die Meta-Beschreibung ist zu %.0f%% ähnlich zu Seite %d („%s“).</target>
+			</trans-unit>
+			<trans-unit id="duplicateContent.descriptionSimilar.suggestion" resname="duplicateContent.descriptionSimilar.suggestion">
+				<source>Write a unique meta description that reflects this specific page's content.</source>
+				<target>Schreiben Sie eine eindeutige Meta-Beschreibung, die den Inhalt dieser spezifischen Seite widerspiegelt.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,459 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Backend" />
+
+<f:section name="content">
+<div class="module-body t3js-module-body px-4 py-3">
+
+    <f:if condition="{pageUid} == 0">
+        <f:then>
+            <div class="callout callout-info">
+                <div class="callout-body">
+                    <strong><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.noPageSelected.title" /></strong>
+                    <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.noPageSelected.body" />
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.pageHeading" /> {pageUid}</h1>
+                <div class="d-flex gap-2">
+                    <a href="{allPagesUrl}" class="btn btn-outline-secondary"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.allPagesOverview" /></a>
+                    <f:form action="analyze" method="post">
+                        <f:form.hidden name="pageUid" value="{pageUid}" />
+                        <f:form.hidden name="languageUid" value="{languageUid}" />
+                        <button type="submit" class="btn btn-primary" data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.analysing')}">
+                            <f:if condition="{storedResult}">
+                                <f:then><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.runAnalysisAgain" /></f:then>
+                                <f:else><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.analysePage" /></f:else>
+                            </f:if>
+                        </button>
+                    </f:form>
+                </div>
+            </div>
+
+            <!-- Pending AI changes (diff preview) -->
+            <f:if condition="{pendingFixes}">
+                <div class="card mb-4 border-warning">
+                    <div class="card-header fw-semibold d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <span><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.pendingAiChanges" /> <span class="badge bg-warning text-dark">{pendingFixes -> f:count()}</span></span>
+                        <div class="d-flex gap-2">
+                            <a href="{pendingApplyUrl}" class="btn btn-sm btn-success" data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.applying')}"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.applyAll" /></a>
+                            <a href="{pendingDiscardUrl}" class="btn btn-sm btn-outline-danger" data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.discarding')}"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.discardAll" /></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <f:for each="{pendingFixes}" as="fix">
+                            <div class="mb-3 pb-3 border-bottom">
+                                <div class="small fw-semibold mb-1">{fix.fix_type_label}</div>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <div class="small text-muted mb-1"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.before" /></div>
+                                        <div class="p-2 bg-body-secondary rounded small">{fix.old_value}</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="small text-muted mb-1"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.afterAiSuggested" /></div>
+                                        <div class="p-2 bg-success-subtle rounded small">{fix.new_value}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:for>
+                        <p class="text-muted small mb-0"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.pendingHint" /></p>
+                    </div>
+                </div>
+            </f:if>
+
+            <f:if condition="{storedResult}">
+                <f:then>
+
+                    <!-- Score overview -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-3">
+                            <div class="card text-center h-100">
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <div class="text-muted small mb-1"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.overall" /></div>
+                                    <div class="display-4 fw-bold text-{storedResult.overall_score_class}">
+                                        {storedResult.overall_score}
+                                    </div>
+                                    <div class="text-muted small"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.outOf100" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="small fw-semibold"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.accessibility" /></span>
+                                            <span class="small text-{storedResult.accessibility_score_class}">{storedResult.accessibility_score}/100</span>
+                                        </div>
+                                        <div class="progress" style="height:8px">
+                                            <div class="progress-bar bg-{storedResult.accessibility_score_class}"
+                                                 role="progressbar"
+                                                 style="width:{storedResult.accessibility_score}%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="small fw-semibold"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.seo" /></span>
+                                            <span class="small text-{storedResult.seo_score_class}">{storedResult.seo_score}/100</span>
+                                        </div>
+                                        <div class="progress" style="height:8px">
+                                            <div class="progress-bar bg-{storedResult.seo_score_class}"
+                                                 role="progressbar"
+                                                 style="width:{storedResult.seo_score}%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="small fw-semibold">
+                                                <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.readability" />
+                                                <f:if condition="{storedResult.metadata.reading_time_minutes}">
+                                                    <span class="badge bg-secondary ms-1 fw-normal" style="font-size:0.7rem">~{storedResult.metadata.reading_time_minutes} <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:qualityPanel.minRead" /></span>
+                                                </f:if>
+                                            </span>
+                                            <span class="small text-{storedResult.readability_score_class}">{storedResult.readability_score}/100</span>
+                                        </div>
+                                        <div class="progress" style="height:8px">
+                                            <div class="progress-bar bg-{storedResult.readability_score_class}"
+                                                 role="progressbar"
+                                                 style="width:{storedResult.readability_score}%"></div>
+                                        </div>
+                                    </div>
+                                    <f:if condition="{storedResult.schema_score} > 0">
+                                        <div class="mt-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span class="small fw-semibold">
+                                                    <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.schema" />
+                                                    <f:if condition="{schemaData.detected_type}">
+                                                        <span class="badge bg-secondary ms-1 fw-normal" style="font-size:0.7rem">{schemaData.detected_type}</span>
+                                                    </f:if>
+                                                </span>
+                                                <span class="small text-{storedResult.schema_score_class}">{storedResult.schema_score}/100</span>
+                                            </div>
+                                            <div class="progress" style="height:8px">
+                                                <div class="progress-bar bg-{storedResult.schema_score_class}"
+                                                     role="progressbar"
+                                                     style="width:{storedResult.schema_score}%"></div>
+                                            </div>
+                                        </div>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Score trend -->
+                    <f:if condition="{trendRuns}">
+                        <div class="card mb-4">
+                            <div class="card-header fw-semibold"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.scoreTrend" /></div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-end gap-3" style="height:120px;overflow-x:auto">
+                                    <f:for each="{trendRuns}" as="run">
+                                        <div class="d-flex flex-column align-items-center" style="min-width:60px">
+                                            <div class="d-flex align-items-end gap-1" style="height:100px">
+                                                <f:for each="{run.bars}" as="bar">
+                                                    <div title="{bar.label}: {bar.score}/100"
+                                                         style="width:8px;height:{bar.score}%;background:{bar.color};border-radius:2px 2px 0 0"></div>
+                                                </f:for>
+                                            </div>
+                                            <small class="text-muted mt-1" style="font-size:0.65rem;white-space:nowrap">{run.date}</small>
+                                        </div>
+                                    </f:for>
+                                </div>
+                                <div class="d-flex gap-3 flex-wrap mt-3">
+                                    <f:for each="{trendRuns.0.bars}" as="bar">
+                                        <small class="d-flex align-items-center gap-1">
+                                            <span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:{bar.color}"></span>
+                                            {bar.label}
+                                        </small>
+                                    </f:for>
+                                </div>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- Issues table -->
+                    <f:if condition="{storedResult.issues}">
+                        <div class="card mb-4">
+                            <div class="card-header fw-semibold">
+                                <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.issuesFound" />
+                                <span class="badge bg-secondary ms-2">{storedResult.issues -> f:count()}</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-striped mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="width:120px"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.category" /></th>
+                                            <th style="width:90px"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.severity" /></th>
+                                            <th><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.issueColumn" /></th>
+                                            <th><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.suggestion" /></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <f:for each="{storedResult.issues}" as="issue">
+                                            <tr>
+                                                <td>
+                                                    <span class="badge bg-secondary text-capitalize">{issue.category}</span>
+                                                </td>
+                                                <td>
+                                                    <f:if condition="{issue.severity} == 'error'">
+                                                        <f:then>
+                                                            <span class="badge bg-danger"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.severityError" /></span>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:if condition="{issue.severity} == 'warning'">
+                                                                <f:then>
+                                                                    <span class="badge bg-warning text-dark"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.severityWarning" /></span>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <span class="badge bg-info text-dark"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.severityInfo" /></span>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:else>
+                                                    </f:if>
+                                                </td>
+                                                <td>{issue.message}</td>
+                                                <td><span class="text-muted small">{issue.suggestion}</span></td>
+                                            </tr>
+                                        </f:for>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- Heading Map -->
+                    <f:if condition="{headingTree}">
+                        <div class="card mb-4">
+                            <div class="card-header fw-semibold d-flex align-items-center gap-2">
+                                <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.headingMap" />
+                                <span class="badge bg-secondary fw-normal">{headingTree -> f:count()} <f:if condition="{headingTree -> f:count()} > 1"><f:then><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.heading.plural" /></f:then><f:else><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.heading.singular" /></f:else></f:if></span>
+                            </div>
+                            <div class="card-body py-2 px-3">
+                                <f:for each="{headingTree}" as="h">
+                                    <f:if condition="{h.skip_before}">
+                                        <div class="d-flex align-items-center gap-2 py-1" style="padding-left:{h.skipped_level}rem">
+                                            <span class="badge bg-danger" style="font-size:0.7rem;min-width:2.2rem">H{h.skipped_level}</span>
+                                            <span class="text-danger small fst-italic"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.missingHeadingPrefix" />{h.skipped_level} <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.missingHeadingSuffix" /></span>
+                                        </div>
+                                    </f:if>
+                                    <div class="d-flex align-items-center gap-2 py-1" style="padding-left:{h.level}rem">
+                                        <f:if condition="{h.duplicate_h1}">
+                                            <f:then>
+                                                <span class="badge bg-warning text-dark" style="font-size:0.7rem;min-width:2.2rem">H{h.level}</span>
+                                            </f:then>
+                                            <f:else>
+                                                <span class="badge bg-secondary" style="font-size:0.7rem;min-width:2.2rem">H{h.level}</span>
+                                            </f:else>
+                                        </f:if>
+                                        <span class="small text-truncate" style="max-width:600px" title="{h.text}">{h.text}</span>
+                                        <f:if condition="{h.duplicate_h1}">
+                                            <span class="badge bg-warning text-dark ms-1" style="font-size:0.65rem"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.duplicateH1" /></span>
+                                        </f:if>
+                                    </div>
+                                </f:for>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- AI suggestions -->
+                    <f:if condition="{storedResult.suggestions}">
+                        <div class="card mb-4">
+                            <div class="card-header fw-semibold">
+                                <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.aiImprovementSuggestions" />
+                                <f:if condition="{storedResult.model_used}">
+                                    <small class="text-muted fw-normal ms-2">
+                                        <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.via" /> {storedResult.provider_used} / {storedResult.model_used}
+                                    </small>
+                                </f:if>
+                            </div>
+                            <div class="card-body">
+                                <ol class="mb-0">
+                                    <f:for each="{storedResult.suggestions}" as="suggestion">
+                                        <li class="mb-2">{suggestion}</li>
+                                    </f:for>
+                                </ol>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- Internal link suggestions -->
+                    <f:if condition="{storedResult.metadata.link_suggestions}">
+                        <div class="card mb-4">
+                            <div class="card-header fw-semibold"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.suggestedInternalLinks" /></div>
+                            <div class="card-body">
+                                <ul class="mb-0">
+                                    <f:for each="{storedResult.metadata.link_suggestions}" as="suggestion">
+                                        <li class="mb-2">
+                                            <strong>{suggestion.title}</strong>
+                                            <span class="text-muted small"> — {suggestion.reason}</span>
+                                        </li>
+                                    </f:for>
+                                </ul>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- Schema AI error -->
+                    <f:if condition="{schemaError}">
+                        <div class="callout callout-danger mb-3">
+                            <div class="callout-body">
+                                <strong><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.aiDetectionFailed" /></strong> {schemaError}
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- Schema AI success -->
+                    <f:if condition="{schemaMsg}">
+                        <div class="callout callout-success mb-3">
+                            <div class="callout-body">
+                                <strong><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.schemaDetected" /></strong> {schemaMsg}
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <!-- Broken links -->
+                    <div class="card mb-4">
+                        <div class="card-header fw-semibold d-flex align-items-center justify-content-between flex-wrap gap-2">
+                            <span><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.linkCheck" /></span>
+                            <a href="{checkLinksUrl}" class="btn btn-sm btn-outline-primary" data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.checkingLinks')}"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.checkLinks" /></a>
+                        </div>
+                        <f:if condition="{storedResult.metadata.broken_links}">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-striped mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.url" /></th>
+                                            <th style="width:100px"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.status" /></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <f:for each="{storedResult.metadata.broken_links}" as="link">
+                                            <tr>
+                                                <td class="{f:if(condition: link.ok, then: '', else: 'text-danger')}">
+                                                    <span class="small">{link.url}</span>
+                                                </td>
+                                                <td>
+                                                    <f:if condition="{link.ok}">
+                                                        <f:then>
+                                                            <span class="badge bg-success">{link.status}</span>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <span class="badge bg-danger">{link.status}</span>
+                                                        </f:else>
+                                                    </f:if>
+                                                </td>
+                                            </tr>
+                                        </f:for>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </f:if>
+                    </div>
+
+                    <!-- Structured Data -->
+                    <div class="card mb-4">
+                        <div class="card-header fw-semibold d-flex align-items-center justify-content-between flex-wrap gap-2">
+                            <span><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.structuredData" /></span>
+                            <div class="d-flex gap-2">
+                                <a href="{schemaUrls.ai_detect}"
+                                   class="btn btn-sm btn-outline-primary"
+                                   data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.detectingAi')}">&#x2728; <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.detectWithAi" /></a>
+                                <a href="{schemaUrls.export}" class="btn btn-sm btn-outline-secondary"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.exportAuditCsv" /></a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <f:if condition="{schemaData.detected_type}">
+                                <f:then>
+                                    <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+                                        <span class="badge bg-primary">{schemaData.detected_type}</span>
+                                        <f:if condition="{schemaData.detected_by} == 'ai'">
+                                            <span class="badge bg-info text-dark"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.aiDetected" /></span>
+                                        </f:if>
+                                        <f:if condition="{schemaData.detected_by} == 'rules'">
+                                            <span class="badge bg-secondary"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.ruleBased" /></span>
+                                        </f:if>
+                                        <div>
+                                            <span class="small fw-semibold"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.schemaScoreLabel" /></span>
+                                            <span class="ms-1 fw-bold text-{storedResult.schema_score_class}">{storedResult.schema_score}/100</span>
+                                        </div>
+                                        <f:if condition="{approvedJsonLd}">
+                                            <span class="badge bg-success"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.approvedLive" /></span>
+                                        </f:if>
+                                    </div>
+
+                                    <!-- JSON-LD preview and approve/reject -->
+                                    <f:if condition="{schemaData.jsonld_preview}">
+                                        <form method="post" action="{schemaUrls.approve}">
+                                            <input type="hidden" name="pageUid" value="{pageUid}" />
+                                            <input type="hidden" name="languageUid" value="{languageUid}" />
+                                            <label class="form-label small fw-semibold"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.jsonLdPreviewLabel" /></label>
+                                            <textarea name="jsonld" class="form-control font-monospace small mb-2"
+                                                      rows="12" style="font-size:0.8rem">{schemaData.jsonld_preview}</textarea>
+                                            <div class="d-flex gap-2">
+                                                <button type="submit" class="btn btn-success btn-sm"
+                                                        data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.saving')}"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.approveActivate" /></button>
+                                                <f:if condition="{approvedJsonLd}">
+                                                    <a href="{schemaUrls.reject}" class="btn btn-outline-danger btn-sm"
+                                                       data-t3cq-loader-msg="{f:translate(key: 'LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.loader.removing')}"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.removeApprovedSchema" /></a>
+                                                </f:if>
+                                            </div>
+                                        </form>
+                                    </f:if>
+
+                                    <!-- Structural validation errors -->
+                                    <f:if condition="{schemaData.validation_errors}">
+                                        <div class="mt-3">
+                                            <strong class="small text-danger"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.jsonLdErrors" /></strong>
+                                            <ul class="small mt-1 mb-0">
+                                                <f:for each="{schemaData.validation_errors}" as="err">
+                                                    <li class="text-danger">{err}</li>
+                                                </f:for>
+                                            </ul>
+                                        </div>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    <p class="text-muted small mb-0">
+                                        <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.noSchemaDetected.prefix" /> <strong><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.detectWithAi" /></strong> <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.noSchemaDetected.middle" /> <strong><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.runAnalysisAgain" /></strong> <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.noSchemaDetected.suffix" />
+                                    </p>
+                                </f:else>
+                            </f:if>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small">
+                        <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.lastAnalysed" /> {storedResult.analyzed_at_display}
+                    </p>
+
+                </f:then>
+                <f:else>
+                    <div class="callout callout-info">
+                        <div class="callout-body">
+                            <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.notAnalysedCallout.prefix" /> <strong><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.analysePage" /></strong> <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.notAnalysedCallout.suffix" />
+                        </div>
+                    </div>
+                </f:else>
+            </f:if>
+
+        </f:else>
+    </f:if>
+
+</div>
+
+<!-- Loading overlay -->
+<div id="t3cq-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99999;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:8px;padding:32px 48px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.2);">
+        <div class="spinner-border text-primary mb-3" role="status" style="width:2.5rem;height:2.5rem;"></div>
+        <div id="t3cq-overlay-label" style="font-size:1rem;font-weight:600;color:#555;"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:backendModule.working" /></div>
+    </div>
+</div>
+
+<f:asset.script identifier="t3cq-loader" src="EXT:t3_content_quality/Resources/Public/JavaScript/backend-loader.js" />
+
+</f:section>
+
+</html>

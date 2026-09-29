@@ -1,0 +1,52 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Woit\T3ContentQuality\:
+    resource: '../Classes/*'
+
+  Woit\T3ContentQuality\Controller\BackendModuleController:
+    public: true
+    tags:
+      - name: backend.controller
+
+  Woit\T3ContentQuality\Controller\AnalyzePageController:
+    public: true
+
+  Woit\T3ContentQuality\Controller\FixPageController:
+    public: true
+
+  Woit\T3ContentQuality\Controller\LinkCheckController:
+    public: true
+
+  Woit\T3ContentQuality\Controller\PendingFixController:
+    public: true
+
+  Woit\T3ContentQuality\Controller\BulkFixController:
+    public: true
+
+  Woit\T3ContentQuality\Controller\SchemaAdvisorController:
+    public: true
+
+  Woit\T3ContentQuality\Controller\AiTextGeneratorController:
+    public: true
+
+  Woit\T3ContentQuality\Middleware\JsonLdInjector:
+    public: true
+
+  Woit\T3ContentQuality\Controller\AiFileMetadataController:
+    public: true
+
+  Woit\T3ContentQuality\EventListener\PageModuleContentListener:
+    tags:
+      - name: event.listener
+        identifier: 't3contentquality.pageModulePanel'
+        event: TYPO3\CMS\Backend\Controller\Event\ModifyPageLayoutContentEvent
+
+  Woit\T3ContentQuality\EventListener\FilelistActionsEventListener:
+    tags:
+      - name: event.listener
+        identifier: 't3contentquality.filelistAiMetadata'
+        event: TYPO3\CMS\Filelist\Event\ProcessFileListActionsEvent

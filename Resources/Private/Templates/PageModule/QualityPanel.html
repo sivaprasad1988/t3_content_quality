@@ -1,0 +1,78 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="card mb-3 border-secondary-subtle">
+    <div class="card-body py-2 px-3">
+        <div class="d-flex align-items-center flex-wrap gap-3">
+
+            <strong class="text-nowrap"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.title" /></strong>
+
+            <f:if condition="{storedResult}">
+                <f:then>
+                    <span class="badge bg-{storedResult.overall_score_class} rounded-pill px-3"
+                          style="font-size:1rem;min-width:4rem">
+                        {storedResult.overall_score}<small>/100</small>
+                    </span>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <small>
+                            <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.accessibility" />
+                            <strong class="text-{storedResult.accessibility_score_class}">
+                                {storedResult.accessibility_score}
+                            </strong>
+                        </small>
+                        <small>
+                            <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.seo" />
+                            <strong class="text-{storedResult.seo_score_class}">
+                                {storedResult.seo_score}
+                            </strong>
+                        </small>
+                        <small>
+                            <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.readability" />
+                            <strong class="text-{storedResult.readability_score_class}">
+                                {storedResult.readability_score}
+                            </strong>
+                        </small>
+                        <f:if condition="{storedResult.metadata.reading_time_minutes}">
+                            <small class="text-muted">
+                                ~{storedResult.metadata.reading_time_minutes} <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:qualityPanel.minRead" />
+                            </small>
+                        </f:if>
+                    </div>
+
+                    <f:if condition="{storedResult.issue_count} > 0">
+                        <small class="text-muted">
+                            {storedResult.issue_count} <f:if condition="{storedResult.issue_count} > 1"><f:then><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.issue.plural" /></f:then><f:else><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.issue.singular" /></f:else></f:if>
+                        </small>
+                    </f:if>
+
+                    <small class="text-muted">
+                        <f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:qualityPanel.analysedLabel" /> {storedResult.analyzed_at_display}
+                    </small>
+                </f:then>
+                <f:else>
+                    <span class="text-muted small"><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:qualityPanel.notAnalysedYet" /></span>
+                </f:else>
+            </f:if>
+
+            <div class="ms-auto">
+                <a href="{analyzeUrl}"
+                   data-t3cq-analyse-btn="1"
+                   class="btn btn-sm {f:if(condition: storedResult, then: 'btn-outline-secondary', else: 'btn-primary')}">
+                    <span data-t3cq-analyse-label="1">
+                        <f:if condition="{storedResult}">
+                            <f:then><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.reanalyse" /></f:then>
+                            <f:else><f:translate key="LLL:EXT:t3_content_quality/Resources/Private/Language/locallang.xlf:panel.analysePage" /></f:else>
+                        </f:if>
+                    </span>
+                    <span data-t3cq-analyse-spinner="1" class="spinner-border spinner-border-sm ms-1" role="status" style="display:none;vertical-align:-2px"></span>
+                </a>
+            </div>
+
+<f:asset.script identifier="t3cq-panel-loader" src="EXT:t3_content_quality/Resources/Public/JavaScript/panel-loader.js" />
+
+        </div>
+    </div>
+</div>
+
+</html>

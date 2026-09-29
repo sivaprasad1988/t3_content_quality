@@ -1,0 +1,59 @@
+{
+    "name": "woit/t3-content-quality",
+    "type": "typo3-cms-extension",
+    "description": "AI-powered accessibility, SEO, and readability quality assistant for TYPO3 editors.",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "keywords": [
+        "TYPO3 CMS",
+        "accessibility",
+        "SEO",
+        "readability",
+        "AI"
+    ],
+    "authors": [
+        {
+            "name": "Sivaprasad Sisupalan",
+            "email": "sivaprasad.s88@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "sivaprasad.s88@gmail.com",
+        "docs": "https://docs.typo3.org/p/woit/t3-content-quality/main/en-us/"
+    },
+    "require": {
+        "php": "^8.2",
+        "typo3/cms-backend": "^14.0",
+        "typo3/cms-core": "^14.0",
+        "typo3/cms-extbase": "^14.0",
+        "typo3/cms-filelist": "^14.0",
+        "typo3/cms-filemetadata": "^14.0",
+        "typo3/cms-fluid": "^14.0"
+    },
+    "suggest": {
+        "typo3/cms-rte-ckeditor": "Adds the AI text generator button to the rich-text editor"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Woit\\T3ContentQuality\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Woit\\T3ContentQuality\\Tests\\": "Tests/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "t3_content_quality"
+        }
+    },
+    "scripts": {
+        "test:unit": "phpunit -c Build/phpunit/UnitTests.xml"
+    }
+}

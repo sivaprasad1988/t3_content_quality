@@ -1,0 +1,14 @@
+# Adds the AI text generator button. Import this file into your own RTE preset:
+#   imports:
+#     - { resource: 'EXT:t3_content_quality/Configuration/RTE/Plugin.yaml' }
+# The TYPO3 YAML loader appends imported list entries, so the button is added
+# after the toolbar items of your preset.
+editor:
+  config:
+    importModules:
+      - { module: '@woit/t3-content-quality/CKEditor/ai-text-generator.js', exports: ['AiTextGenerator'] }
+
+    toolbar:
+      items:
+        - '|'
+        - aiTextGenerator

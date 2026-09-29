@@ -1,0 +1,32 @@
+# cat=basic; type=options[anthropic,openai,ollama]; label=AI Provider
+aiProvider = ollama
+
+# cat=basic; type=boolean; label=Enable AI Analysis
+enableAiAnalysis = 1
+
+# cat=basic/anthropic; type=string; label=Anthropic API Key
+anthropicApiKey =
+
+# cat=basic/anthropic; type=string; label=Anthropic Model
+anthropicModel = claude-sonnet-5-5
+
+# cat=basic/anthropic; type=options[low,medium,high,off]; label=Anthropic effort (thinking depth; "off" for Haiku 4.5 and older models)
+anthropicEffort = low
+
+# cat=basic/anthropic; type=boolean; label=Anthropic server-side fallback when a request is declined (Sonnet 5.5, Opus 5, Opus 5.5, Fable 5.1 only)
+anthropicFallback = 1
+
+# cat=basic/openai; type=string; label=OpenAI API Key
+openaiApiKey =
+
+# cat=basic/openai; type=string; label=OpenAI Model
+openaiModel = gpt-4o-mini
+
+# cat=basic/ollama; type=string; label=Ollama Server URL (e.g. http://localhost:11434)
+ollamaUrl = http://ollama:11434
+
+# cat=basic/ollama; type=string; label=Ollama Model (e.g. llama3.2, phi3, mistral)
+ollamaModel = llama3.2
+
+# cat=basic; type=int+; label=Max tokens per AI response incl. thinking (Anthropic/OpenAI only)
+maxTokens = 16000

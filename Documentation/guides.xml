@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides xmlns="https://www.phpdoc.org/guides"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+        links-are-relative="true">
+    <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+               project-home="https://extensions.typo3.org/extension/t3_content_quality"
+               project-contact="mailto:sivaprasad.s88@gmail.com"
+               typo3-core-preferred="main"
+               interlink-shortcode="woit/t3-content-quality"
+    />
+    <project title="Content Quality Assistant"
+             release="0.1.0"
+             version="0.1"
+             copyright="since 2026 by Sivaprasad Sisupalan"
+    />
+    <inventory id="t3coreapi" url="https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/"/>
+    <inventory id="t3tsconfig" url="https://docs.typo3.org/m/typo3/reference-tsconfig/main/en-us/"/>
+    <inventory id="ext_rte_ckeditor" url="https://docs.typo3.org/c/typo3/cms-rte-ckeditor/main/en-us/"/>
+</guides>
