@@ -6,6 +6,16 @@
 Changelog
 =========
 
+..  _changelog-0-1-1:
+
+0.1.1
+=====
+
+*   Extension title renamed to "AI Content Quality Assistant".
+*   Site-specific content in the documentation screenshots obfuscated.
+*   Packagist and TER links added to the installation documentation.
+*   Composer keywords extended.
+
 ..  _changelog-0-1-0:
 
 0.1.0
