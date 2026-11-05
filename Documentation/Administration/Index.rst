@@ -36,6 +36,68 @@ The button is only shown for files that are indexed and for which the user
 has the ``editMeta`` permission. Grant it in the backend user group, tab
 :guilabel:`Mounts and Workspaces`, :guilabel:`File Operation Permissions`.
 
+..  _admin-filemetadata-command:
+
+Bulk image metadata (CLI and scheduler)
+---------------------------------------
+
+The command ``t3contentquality:filemetadata:generate`` does the same as the
+file list metadata button for many images at once. It selects images whose
+default-language metadata has an empty :guilabel:`Alternative text` and fills
+every empty field: first from embedded EXIF/IPTC data, then
+``download_name`` from the file name, then alternative text, title,
+description and caption via AI vision. Existing values are never
+overwritten.
+
+..  code-block:: bash
+
+    # list the images that would be processed (no AI requests, no DB writes)
+    vendor/bin/typo3 t3contentquality:filemetadata:generate --dry-run
+
+    # process up to 20 images (default)
+    vendor/bin/typo3 t3contentquality:filemetadata:generate
+
+    # only storage 1, folder /user_upload/, 50 images
+    vendor/bin/typo3 t3contentquality:filemetadata:generate --storage=1 --folder=/user_upload/ --limit=50
+
+..  list-table::
+    :header-rows: 1
+    :widths: 30 70
+
+    *   -   Option
+        -   Description
+    *   -   ``--limit``, ``-l``
+        -   Maximum number of images per run (default 20). Each image costs
+            one AI vision request.
+    *   -   ``--storage``, ``-s``
+        -   Only images of this storage uid (default 0 = all storages).
+    *   -   ``--folder``, ``-f``
+        -   Only images below this folder identifier. Requires ``--storage``.
+    *   -   ``--dry-run``
+        -   Only list the images, without AI requests or database writes.
+    *   -   ``-v``
+        -   Also list skipped files (missing on disk or storage offline).
+
+Only JPEG, PNG, GIF and WebP files up to 5 MB are selected. Files that are
+missing on disk or in an offline storage are skipped and do not count
+against ``--limit``. The command exits with an error if the AI provider is
+not usable or if a file throws an exception.
+
+To run it regularly, add a task :guilabel:`Execute console commands` in
+:guilabel:`Administration > Scheduler` and choose
+``t3contentquality:filemetadata:generate``. The command runs as the
+``_cli_`` user, so the ``editMeta`` file permission does not apply.
+
+Recommendations for scheduler tasks:
+
+*   Run ``--dry-run`` once on the command line to see how many images
+    are selected.
+*   Keep ``--limit`` small (for example 20 to 50) and run the task more
+    often instead. Every image costs one AI request; with Ollama, each
+    image takes several seconds.
+*   Images for which the AI returns nothing keep their empty alternative
+    text and are selected again in the next run.
+
 ..  _admin-permissions-fixes:
 
 Page permissions
@@ -244,7 +306,8 @@ The extension logs through the TYPO3 logging API. Logger names start with
             skipped: Ollama not reachable, Pending fix rejected by
             DataHandler, Pending fix skipped: no page record for language
     *   -   info
-        -   File metadata updated, Image too large for AI vision
+        -   File metadata updated, Image too large for AI vision (both
+            from the file list button and the bulk command)
 
 By default TYPO3 writes messages of level ``warning`` and higher to
 :file:`var/log/typo3_*.log`. To also log ``info`` messages of this

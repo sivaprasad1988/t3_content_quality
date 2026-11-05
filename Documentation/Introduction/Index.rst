@@ -51,6 +51,11 @@ AI metadata for images in the file list
     Embedded EXIF and IPTC data is read first; the AI only describes what the
     file itself does not provide. See :ref:`filelist-ai-metadata`.
 
+Bulk image metadata on the command line
+    The console command ``t3contentquality:filemetadata:generate`` fills
+    missing metadata for many images at once and can run as a scheduler
+    task. See :ref:`admin-filemetadata-command`.
+
 ..  _features:
 
 Checks at a glance

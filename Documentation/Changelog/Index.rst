@@ -6,6 +6,20 @@
 Changelog
 =========
 
+..  _changelog-unreleased:
+
+Unreleased
+==========
+
+*   New console command ``t3contentquality:filemetadata:generate`` fills
+    missing image metadata in bulk (CLI and scheduler), see
+    :ref:`admin-filemetadata-command`.
+*   Image metadata generation moved from ``AiFileMetadataController`` into
+    the reusable service ``FileMetadataGenerator``; the candidate query of
+    the command is in ``FileMetadataCandidateFinder``.
+*   Unit tests for ``FileMetadataGenerator`` and
+    ``GenerateFileMetadataCommand``.
+
 ..  _changelog-0-1-1:
 
 0.1.1

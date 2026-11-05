@@ -19,6 +19,8 @@ Architecture
     with autowiring and use constructor injection.
 *   The page module panel and the file list button are PSR-14 event
     listeners.
+*   The bulk image metadata command is a Symfony console command,
+    registered with ``schedulable: true``.
 *   The JSON-LD output is a PSR-15 frontend middleware.
 *   Backend actions are backend routes. The Content Quality module is an
     Extbase backend module.
@@ -332,6 +334,57 @@ JavaScript modules
 :file:`backend-loader.js`, :file:`panel-loader.js`
     Loading indicators for the module and the panel.
 
+..  _developer-filemetadata:
+
+Image metadata services
+=======================
+
+The file list button (:php:`AiFileMetadataController`) and the console
+command (:php:`GenerateFileMetadataCommand`) share the same services:
+
+:php:`Woit\T3ContentQuality\Service\FileMetadataGenerator`
+    :php:`generate(File $file): array` fills the empty fields of the
+    default-language metadata record: EXIF/IPTC data, ``download_name``
+    from the file name, then alternative text, title, description and
+    caption via :php:`AiImageMetadataAnalyzer`. Fields without a database
+    column are skipped. Existing values are never overwritten. Returns the
+    written fields (field name => value); an empty array means nothing was
+    written.
+
+:php:`Woit\T3ContentQuality\Service\FileMetadataCandidateFinder`
+    :php:`findFileUids(int $afterUid, int $batchSize, int $storageUid = 0, string $folder = ''): array`
+    returns uids of images with an empty alternative text, ascending.
+    Only JPEG, PNG, GIF and WebP files up to 5 MB in existing storages are
+    returned, and files flagged as missing are excluded. Use
+    ``$afterUid`` as a paging cursor.
+
+Example:
+
+..  code-block:: php
+    :caption: EXT:my_extension/Classes/Service/MyImageImport.php
+
+    use TYPO3\CMS\Core\Resource\File;
+    use Woit\T3ContentQuality\Service\FileMetadataGenerator;
+
+    final class MyImageImport
+    {
+        public function __construct(
+            private readonly FileMetadataGenerator $fileMetadataGenerator,
+        ) {}
+
+        public function afterImport(File $file): void
+        {
+            $writtenFields = $this->fileMetadataGenerator->generate($file);
+        }
+    }
+
+The command :php:`GenerateFileMetadataCommand` pages through the
+candidates with :php:`FileMetadataCandidateFinder`, skips files that are
+missing on disk or in an offline storage (they do not count against
+``--limit``) and returns ``Command::FAILURE`` if the AI is not usable or a
+file throws an exception. Options are described in
+:ref:`admin-filemetadata-command`.
+
 ..  _developer-testing:
 
 Tests
@@ -340,8 +393,10 @@ Tests
 Unit tests are in :file:`Tests/Unit/` and use PHPUnit 11. They cover the
 score calculation, schema validation and type detection, the JSON-LD
 escaping in the middleware, the AI settings, the request and response
-handling of :php:`AiProviderClient` and the parsing of AI answers. No
-network access or database is needed.
+handling of :php:`AiProviderClient`, the parsing of AI answers, the image
+metadata generation (:php:`FileMetadataGenerator`) and the bulk command
+(:php:`GenerateFileMetadataCommand`). No network access or database is
+needed.
 
 In a standalone checkout of the extension:
 
@@ -356,5 +411,16 @@ In a TYPO3 project that has PHPUnit installed:
 
     vendor/bin/phpunit -c vendor/woit/t3-content-quality/Build/phpunit/UnitTests.xml
 
-Permission checks and the DataHandler integration need a database and are
-not covered by unit tests.
+If the extension is a path package in a project (for example
+:file:`packages/t3_content_quality/` in DDEV) and the TYPO3 Composer plugins
+are not allowed for it, install the test dependencies without plugins:
+
+..  code-block:: bash
+
+    cd packages/t3_content_quality
+    composer install --no-plugins --no-scripts
+    vendor/bin/phpunit -c Build/phpunit/UnitTests.xml
+
+Permission checks, the DataHandler integration and the database query of
+:php:`FileMetadataCandidateFinder` need a database and are not covered by
+unit tests.

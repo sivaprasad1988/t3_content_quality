@@ -39,6 +39,13 @@ services:
   Woit\T3ContentQuality\Controller\AiFileMetadataController:
     public: true
 
+  Woit\T3ContentQuality\Command\GenerateFileMetadataCommand:
+    tags:
+      - name: console.command
+        command: 't3contentquality:filemetadata:generate'
+        description: 'Generate missing image metadata (alt text, title, description, caption) via EXIF/IPTC and AI vision'
+        schedulable: true
+
   Woit\T3ContentQuality\EventListener\PageModuleContentListener:
     tags:
       - name: event.listener

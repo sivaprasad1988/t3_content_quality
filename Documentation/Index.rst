@@ -69,7 +69,8 @@ editor and fills missing image metadata in the file list.
 
     ..  card:: :ref:`Administration <administration>`
 
-        Permissions, database tables, API keys, Ollama and logging.
+        Permissions, database tables, API keys, Ollama, logging and the
+        bulk image metadata command.
 
     ..  card:: :ref:`Developer <developer>`
 

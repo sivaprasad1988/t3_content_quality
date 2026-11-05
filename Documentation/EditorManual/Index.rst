@@ -366,3 +366,10 @@ Limits:
     Embedded metadata is read for all image files.
 *   With Ollama, the configured model must support images (for example
     ``llava``), see :confval:`t3cq-ollamaModel`.
+
+..  tip::
+
+    To fill the metadata of many images at once, an administrator can run
+    the command ``t3contentquality:filemetadata:generate`` or set it up as a
+    scheduler task, see :ref:`admin-filemetadata-command`. Check the
+    generated texts afterwards in the metadata form of each file.

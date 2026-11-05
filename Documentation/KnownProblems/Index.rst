@@ -20,6 +20,11 @@ This is a beta version. The following limitations are known:
     or above 70 (title) and below 70 or above 160 (description).
 *   **The text generator's length limit** is an instruction to the AI and
     is not enforced.
+*   **The bulk image metadata command** only selects images with an empty
+    alternative text. Images that have an alternative text but miss title,
+    description or caption are not selected; use the file list button for
+    them. Images for which the AI returns nothing are selected again in
+    every run.
 *   **Approved JSON-LD** is output as approved. Editors who may edit a page
     can publish any JSON-LD for it; check it before approving.
 

@@ -25,6 +25,8 @@ CKEditor and fills missing image metadata in the file list.
   output via PSR-15 middleware
 - CKEditor 5 AI text generator
 - AI image metadata in **Media > Filelist**, using EXIF/IPTC data first
+- Bulk image metadata on the command line or as a scheduler task
+  (`t3contentquality:filemetadata:generate`)
 
 Rule-based checks work without any AI provider.
 
@@ -38,6 +40,36 @@ vendor/bin/typo3 extension:setup -e t3_content_quality
 Then configure the AI provider in **System > Settings > Extension
 Configuration > t3_content_quality**.
 
+## Command line and scheduler
+
+Fill missing image metadata for many files at once. The command picks images
+with an empty alternative text and does the same as the file list button:
+EXIF/IPTC first, then the AI for alternative text, title, description and
+caption. Existing values are never overwritten.
+
+```bash
+# list the images that would be processed (no AI requests, no DB writes)
+vendor/bin/typo3 t3contentquality:filemetadata:generate --dry-run
+
+# process up to 20 images (default limit)
+vendor/bin/typo3 t3contentquality:filemetadata:generate
+
+# only storage 1, folder /user_upload/, 50 images
+vendor/bin/typo3 t3contentquality:filemetadata:generate --storage=1 --folder=/user_upload/ --limit=50
+```
+
+| Option | Description |
+|---|---|
+| `--limit`, `-l` | Maximum number of images per run (default 20). Each image costs one AI vision request. |
+| `--storage`, `-s` | Only images of this storage uid (default 0 = all storages) |
+| `--folder`, `-f` | Only images below this folder identifier, requires `--storage` |
+| `--dry-run` | Only list the images, no AI requests, no database writes |
+| `-v` | Also list skipped files (missing on disk or storage offline) |
+
+For regular runs, add a task **Execute console commands** in
+**Administration > Scheduler** and select
+`t3contentquality:filemetadata:generate`.
+
 ## Requirements
 
 - TYPO3 14
@@ -49,6 +81,15 @@ Configuration > t3_content_quality**.
 ```bash
 composer install
 composer test:unit
+```
+
+Inside a TYPO3 project that does not allow the TYPO3 Composer plugins for the
+extension folder (for example in DDEV):
+
+```bash
+cd packages/t3_content_quality
+composer install --no-plugins --no-scripts
+vendor/bin/phpunit -c Build/phpunit/UnitTests.xml
 ```
 
 ## Documentation
