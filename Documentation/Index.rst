@@ -19,7 +19,7 @@ AI Content Quality Assistant
     en
 
 :Author:
-    Sivaprasad Sisupalan
+    Siva
 
 :License:
     This document is published under the
