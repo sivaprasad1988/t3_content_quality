@@ -6,10 +6,10 @@
 Changelog
 =========
 
-..  _changelog-unreleased:
+..  _changelog-0-2-0:
 
-Unreleased
-==========
+0.2.0
+=====
 
 *   New console command ``t3contentquality:filemetadata:generate`` fills
     missing image metadata in bulk (CLI and scheduler), see
@@ -19,6 +19,7 @@ Unreleased
     the command is in ``FileMetadataCandidateFinder``.
 *   Unit tests for ``FileMetadataGenerator`` and
     ``GenerateFileMetadataCommand``.
+*   Author name changed to "Siva".
 
 ..  _changelog-0-1-1:
 

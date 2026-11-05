@@ -10,8 +10,8 @@
                interlink-shortcode="woit/t3-content-quality"
     />
     <project title="AI Content Quality Assistant"
-             release="0.1.1"
-             version="0.1"
+             release="0.2.0"
+             version="0.2"
              copyright="since 2026 by Siva"
     />
     <inventory id="t3coreapi" url="https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/"/>
